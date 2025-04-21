@@ -549,7 +549,8 @@ class NotionServer:
                         "Content-Type": "application/json",
                         "Notion-Version": "2022-06-28"
                     },
-                    timeout=30.0
+                    timeout=30.0,
+                    proxy="socks5://127.0.0.1:1080"
                 ) as client:
                     # Test authentication by getting current user
                     user_response = await client.get("/users/me")
