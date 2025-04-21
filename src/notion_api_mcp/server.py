@@ -180,7 +180,11 @@ class NotionServer:
                             "Notion-Version": "2022-06-28"
                         },
                         timeout=30.0,
-                        limits=httpx.Limits(max_keepalive_connections=5, max_connections=10)
+                        limits=httpx.Limits(max_keepalive_connections=5, max_connections=10),
+                        proxies={
+                            "http://":  "socks5://127.0.0.1:1080",
+                            "https://": "socks5://127.0.0.1:1080",
+                        }
                     )
                     # Test connection
                     await self.client.get("/users/me")
